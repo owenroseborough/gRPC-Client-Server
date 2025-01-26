@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package BankService;
+
+// The BankService definition.
+service BankService {
+  // where we define server methods to be called by client
+  rpc CreateAccount(CreateAccountRequest) returns (CreateAccountReply) {}
+  rpc GetBalance(GetBalanceRequest) returns (GetBalanceReply) {}
+  rpc Deposit(DepositRequest) returns (DepositReply) {}
+  rpc Withdraw(WithdrawRequest) returns (WithdrawReply) {}
+  rpc CalculateInterest(CalculateInterestRequest) returns (CalculateInterestReply) {}
+}
+message CreateAccountRequest {
+  string account_id = 1;
+  string account_type = 2;
+}
+message CreateAccountReply {
+  string confirmationMessage = 1;
+}
+message GetBalanceRequest {
+  string account_id = 1;
+}
+message GetBalanceReply {
+  float balance = 1;
+}
+message DepositRequest {
+  string account_id = 1;
+  float amount = 2;
+}
+message DepositReply {
+  string confirmationMessage = 1;
+}
+message WithdrawRequest {
+  string account_id = 1;
+  float amount = 2;
+}
+message WithdrawReply {
+  string confirmationMessage = 1;
+}
+message CalculateInterestRequest {
+  string account_id = 1;
+  float annual_interest_rate = 2;
+}
+message CalculateInterestReply {
+  string confirmationMessage = 1;
+}
